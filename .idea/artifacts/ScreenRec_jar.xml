@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ScreenRec:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ScreenRec_jar</output-path>
+    <root id="archive" name="ScreenRec.jar">
+      <element id="module-output" name="ScreenRec" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/customizer.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/jmf.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/mediaplayer.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/multiplayer.jar" path-in-jar="/" />
+      <element id="library" level="project" name="customizer" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="customizer">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/customizer.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/jmf.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/mediaplayer.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jmf-2_1_1e-alljava/JMF-2.1.1e/lib/multiplayer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

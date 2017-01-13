@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_screenrec" default="compile.module.screenrec">
+  <dirname property="module.screenrec.basedir" file="${ant.file.module_screenrec}"/>
+  
+  <property name="module.jdk.home.screenrec" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.screenrec" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.screenrec" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.screenrec" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="screenrec.output.dir" value="${module.screenrec.basedir}/out/production/ScreenRec"/>
+  <property name="screenrec.testoutput.dir" value="${module.screenrec.basedir}/out/test/ScreenRec"/>
+  
+  <path id="screenrec.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="screenrec.module.production.classpath">
+    <path refid="${module.jdk.classpath.screenrec}"/>
+    <path refid="library.customizer.classpath"/>
+  </path>
+  
+  <path id="screenrec.runtime.production.module.classpath">
+    <pathelement location="${screenrec.output.dir}"/>
+    <path refid="library.customizer.classpath"/>
+  </path>
+  
+  <path id="screenrec.module.classpath">
+    <path refid="${module.jdk.classpath.screenrec}"/>
+    <pathelement location="${screenrec.output.dir}"/>
+    <path refid="library.customizer.classpath"/>
+  </path>
+  
+  <path id="screenrec.runtime.module.classpath">
+    <pathelement location="${screenrec.testoutput.dir}"/>
+    <pathelement location="${screenrec.output.dir}"/>
+    <path refid="library.customizer.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.screenrec">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.screenrec">
+    <patternset refid="excluded.from.module.screenrec"/>
+  </patternset>
+  
+  <path id="screenrec.module.sourcepath">
+    <dirset dir="${module.screenrec.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.screenrec" depends="compile.module.screenrec.production,compile.module.screenrec.tests" description="Compile module ScreenRec"/>
+  
+  <target name="compile.module.screenrec.production" depends="register.custom.compilers" description="Compile module ScreenRec; production classes">
+    <mkdir dir="${screenrec.output.dir}"/>
+    <javac2 destdir="${screenrec.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.screenrec}/javac">
+      <compilerarg line="${compiler.args.screenrec}"/>
+      <bootclasspath refid="screenrec.module.bootclasspath"/>
+      <classpath refid="screenrec.module.production.classpath"/>
+      <src refid="screenrec.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.screenrec"/>
+    </javac2>
+    
+    <copy todir="${screenrec.output.dir}">
+      <fileset dir="${module.screenrec.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.screenrec.tests" depends="register.custom.compilers,compile.module.screenrec.production" description="compile module ScreenRec; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.screenrec" description="cleanup module">
+    <delete dir="${screenrec.output.dir}"/>
+    <delete dir="${screenrec.testoutput.dir}"/>
+  </target>
+</project>
